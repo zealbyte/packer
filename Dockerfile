@@ -1,11 +1,7 @@
 #
 # Run bower with specific requirements
 #
-
 FROM alpine:3.7
-
-ENV NODE_ENV=dev
-ENV PORT=4000
 
 RUN apk --no-cache add \
 	tini curl git subversion openssh openssl mercurial bash nodejs nodejs-npm
@@ -17,10 +13,10 @@ RUN npm install --global bower \
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
+ENV NODE_ENV=dev
+ENV PORT=4000
+ENV HOME /app
 WORKDIR /app
-
 EXPOSE 4000
-
 ENTRYPOINT [ "docker-entrypoint.sh" ]
-
 CMD [ "npm" ]
