@@ -1,7 +1,7 @@
 #
 # Run bower with specific requirements
 #
-FROM alpine:3.7
+FROM alpine:latest
 
 RUN apk --no-cache add \
 	tini curl git subversion openssh openssl mercurial bash nodejs nodejs-npm
